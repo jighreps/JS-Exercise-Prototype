@@ -39,9 +39,24 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+
+Person.prototype.eat = function(food){
+  if (this.stomach.length < 10)
+    return this.stomach.push(food);
+}
+ Person.prototype.poop = function(){
+  return this.stomach = [];
+    
+ }
+
+ Person.prototype.toString = function(){
+   return `${this.name}, ${this.age}`;
+ }
 
 /*
   TASK 2
@@ -57,9 +72,28 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(model, milesPerGallon) {
+    this.milesPerGallon = milesPerGallon;
+    this.model = model;
+    this.tank = 0;
+    this.odometer = 0;
 }
+
+const newCar = new Car('gmc', 34);    
+
+Car.prototype.fill = function(gallons){    
+  return this.tank = this.tank + gallons;
+}
+
+
+Car.prototype.drive = function(distance){    
+  this.odometer = this.odometer + distance; 
+  this.tank = this.tank - (distance/this.milesPerGallon);   
+}
+
+
+
+// console.log(newCar.fill(34));
 
 /*
   TASK 3
@@ -68,18 +102,25 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age);
 
+  this.favoriteToy = favoriteToy;
+}
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`;
 }
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Window/Global Object Binding - When 'this' is global, and can be accessed by the browser's debugging
+  2. Implicit Binding - basically whenever you invoke a function anything to the LEFT of the . is going to be what "this"is referring to.
+  3. New Binding - we are able to reference this to a new binding.
+  4. Explicit Binding - we are able to override constructor objects by "explicitly" with .call and .apply. 
 */
 
 
