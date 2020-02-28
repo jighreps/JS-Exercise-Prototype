@@ -118,9 +118,10 @@ Baby.prototype.play = function(){
 
   In your own words explain the four principles for the "this" keyword below:
   1. Window/Global Object Binding - When 'this' is global, and can be accessed by the browser's debugging
-  2. Implicit Binding - basically whenever you invoke a function anything to the LEFT of the . is going to be what "this"is referring to.
-  3. New Binding - we are able to reference this to a new binding.
-  4. Explicit Binding - we are able to override constructor objects by "explicitly" with .call and .apply. 
+  2. Implicit Binding - basically whenever you invoke a function anything to the LEFT of the . is going to be what "this"is referring to. Applied to objects with 'methods'
+
+  3. New Binding - we are able to reference a new object, the new object should be capitalized.
+  4. Explicit Binding - we are able to override constructor objects by "explicitly" with .call and .apply .bind. 
 */
 
 
